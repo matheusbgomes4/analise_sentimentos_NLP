@@ -10,31 +10,31 @@ Este projeto tem como objetivo realizar uma análise de sentimentos com base em 
 ## 🗂️ Conteúdo
 O projeto está estruturado em um notebook Jupyter, contendo as seguintes etapas:
 
-1. **Carregamento dos Dados**
+**Carregamento dos Dados**
    - Dataset contendo avaliações de produtos (texto + rótulo)
 
-2. **Pré-processamento**
+**Pré-processamento**
    - Limpeza dos textos
    - Remoção de stopwords e pontuações
 
-3. **Exploração de Dados**
+**Exploração de Dados**
    - Distribuição dos sentimentos
 
-4. **Vetorização**
+**Vetorização**
    - Transformação dos textos em vetores com `TF-IDF`
 
-5. **Modelagem**
+**Modelagem**
    - Treinamento dos modelos:
      - Regressão Logística
      - Random Forest
      - Naive Bayes
 
-6. **Avaliação**
+**Avaliação**
    - Acurácia
    - F1-Score
    - Matriz de Confusão
 
-7. **Teste com Novas Avaliações**
+**Teste com Novas Avaliações**
    - Classificação de texto inserido manualmente
 
 ## 🧪 Tecnologias e Bibliotecas
