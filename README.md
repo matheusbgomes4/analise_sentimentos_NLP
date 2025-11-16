@@ -22,7 +22,7 @@ Salvar e testar o modelo em avaliações novas.
 
 O notebook contém as seguintes etapas:
 
-1. Carregamento do Dataset
+## 1. Carregamento do Dataset
 
 Dataset com 15 mil avaliações, contendo:
 
@@ -32,10 +32,8 @@ nota (1 a 5 estrelas)
 
 sentimento rotulado
 ---
-2. Pré-processamento dos Textos
-
+## 2. Pré-processamento dos Textos
 O texto passa por várias camadas de transformação:
-
 ✔ Remoção de stopwords
 ✔ Tokenização
 ✔ Remoção de pontuação
@@ -55,7 +53,7 @@ tratamento_4
 
 tratamento_5 (versão final e mais limpa)
 ---
-3. Exploração dos Dados (EDA)
+## 3. Exploração dos Dados (EDA)
 
 Contagem de palavras mais frequentes
 
@@ -65,7 +63,7 @@ Análise das palavras positivas vs negativas
 
 Distribuições de sentimentos
 ---
-4. Vetorização dos Textos
+## 4. Vetorização dos Textos
 
 Foram testadas várias técnicas de vetorização:
 
@@ -77,7 +75,7 @@ TF-IDF com ngrams (1,2)
 
 Teste com diferentes quantidades de features (50, 100, 1000, todas)
 ---
-5. Modelagem e Avaliação
+## 5. Modelagem e Avaliação
 
 O principal modelo utilizado foi Regressão Logística, gerando resultados para cada etapa.
 
@@ -85,7 +83,7 @@ O principal modelo utilizado foi Regressão Logística, gerando resultados para 
 Técnica	Pré-processamento	Acurácia
 TF-IDF (ngrams 1–2)	tratamento_5	91.85%
 ---
-6. Interpretação do Modelo
+## 6. Interpretação do Modelo
 
 Foi analisado o peso das palavras no modelo:
 
@@ -95,7 +93,7 @@ ex.: ótimo, excelente, perfeito, adorei, satisfatório
 🔹 Palavras mais associadas a sentimentos negativos
 ex.: péssimo, defeito, frágil, decepção, devolução
 ---
-7. Exportação dos Modelos
+## 7. Exportação dos Modelos
 
 O projeto salva:
 
@@ -105,7 +103,7 @@ modelo_regressao_logistica.pkl
 
 Para uso posterior.
 ---
-8. Função de Classificação para Novas Avaliações
+## 8. Função de Classificação para Novas Avaliações
 
 Foi criada uma função que:
 
