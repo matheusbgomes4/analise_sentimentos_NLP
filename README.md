@@ -138,11 +138,13 @@ Joblib
 Unidecode
 ---
 # 📌 Exemplos de Classificação
-Avaliação	Resultado
-“Ótimo produto, super recomendo!”	positivo
-“Entrega atrasou muito, decepcionado.”	negativo
-“Produto danificado, precisei devolver.”	negativo
-“Bom custo-benefício, atendeu às expectativas.”	positivo
+
+| Avaliação                                                      | Resultado |
+|---------------------------------------------------------------|-----------|
+| "Ótimo produto, super recomendo!"                             | positivo  |
+| "Entrega atrasou muito, decepcionado."                        | negativo  |
+| "Produto danificado, precisei devolver."                      | negativo  |
+| "Bom custo-benefício, atendeu às expectativas."               | positivo  |
 ---
 #🚀 Resultados e Conclusão
 
