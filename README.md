@@ -145,7 +145,7 @@ Unidecode
 | "Produto danificado, precisei devolver."                      | negativo  |
 | "Bom custo-benefício, atendeu às expectativas."               | positivo  |
 ---
-#🚀 Resultados e Conclusão
+# 🚀 Resultados e Conclusão
 
 O projeto demonstra como pré-processamento textual e vetorização adequada elevam significativamente a performance do modelo.
 
