@@ -1,4 +1,3 @@
-# 📝 README Profissional – Análise de Sentimentos de Avaliações da Amazon
 # 📊 Análise de Sentimentos em Avaliações da Amazon
 
 Processamento de Linguagem Natural (PLN) + Machine Learning (ML)
