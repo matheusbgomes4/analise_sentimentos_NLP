@@ -138,7 +138,6 @@ Joblib
 Unidecode
 ---
 # 📌 Exemplos de Classificação
-
 | Avaliação                                                      | Resultado |
 |---------------------------------------------------------------|-----------|
 | "Ótimo produto, super recomendo!"                             | positivo  |
