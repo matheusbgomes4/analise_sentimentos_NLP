@@ -1,157 +1,140 @@
-# 📊 Análise de Sentimentos em Avaliações da Amazon
+# 📊 Análise de Sentimentos — Avaliações da Amazon
 
-Processamento de Linguagem Natural (PLN) + Machine Learning (ML)
+Processamento de Linguagem Natural (NLP) + Machine Learning (ML) para classificar avaliações da Amazon como *positivas* ou *negativas*, a partir de um pipeline completo de pré-processamento, vetorização e modelagem.
 
-Este projeto realiza análise de sentimentos em avaliações reais de consumidores da Amazon.
-Ele abrange desde limpeza e padronização de textos até a criação de um modelo de Machine Learning utilizando TF-IDF + Regressão Logística, capaz de classificar novas avaliações como positivas ou negativas.
 ---
-# 🎯 Objetivos do Projeto
 
-Classificar avaliações em positivo ou negativo.
+## 🎯 Objetivos
 
-Comparar diferentes estágios de pré-processamento.
+- Classificar avaliações em positivo ou negativo  
+- Comparar diferentes fases de pré-processamento  
+- Avaliar impacto da limpeza textual no desempenho dos modelos  
+- Construir pipeline realista usando TF-IDF + Regressão Logística  
+- Permitir pré-classificação de novas avaliações
 
-Demonstrar o impacto da limpeza textual nos modelos.
-
-Criar um pipeline realista usando técnicas modernas de NLP.
-
-Salvar e testar o modelo em avaliações novas.
 ---
-# 📁 Estrutura do Projeto
 
-O notebook contém as seguintes etapas:
+## 🧪 Pipeline do Projeto
 
-## 1. Carregamento do Dataset
+1. Carregamento do dataset  
+2. Pré-processamento de texto (5 níveis)  
+3. Análise exploratória (EDA)  
+4. Vetorização (Bag of Words / TF-IDF / n-grams)  
+5. Construção do modelo (Regressão Logística)  
+6. Avaliação de métricas  
+7. Interpretação do modelo (importância das palavras)  
+8. Exportação do modelo + vetorizador  
+9. Função para prever sentimento de novas frases
 
-Dataset com 15 mil avaliações, contendo:
-
-texto da avaliação
-
-nota (1 a 5 estrelas)
-
-sentimento rotulado
 ---
-## 2. Pré-processamento dos Textos
-O texto passa por várias camadas de transformação:
-✔ Remoção de stopwords
-✔ Tokenização
-✔ Remoção de pontuação
-✔ Remoção de acentuação
-✔ Normalização (lowercase)
-✔ Stemming (RSLP)
 
-Cada etapa gera uma nova coluna:
+## 📁 Estrutura dos Dados
 
-tratamento_1
+| Coluna         | Descrição                              |
+|----------------|------------------------------------------|
+| `reviewText`   | Texto da avaliação                       |
+| `rating`       | Nota de 1 a 5 estrelas                    |
+| `sentiment`    | Rótulo de sentimento (positivo / negativo) |
 
-tratamento_2
-
-tratamento_3
-
-tratamento_4
-
-tratamento_5 (versão final e mais limpa)
 ---
-## 3. Exploração dos Dados (EDA)
 
-Contagem de palavras mais frequentes
+## 🔧 Pré-processamento Textual
 
-WordCloud geral e por sentimento
+Para cada avaliação, aplicamos:
 
-Análise das palavras positivas vs negativas
+- Remoção de stopwords  
+- Tokenização  
+- Remoção de pontuação  
+- Conversão para minúsculas  
+- Remoção de acentos  
+- *Stemming* (RSLP)
 
-Distribuições de sentimentos
+As transformações geram colunas intermediárias:
+
+- `tratamento_1`, `tratamento_2`, ..., `tratamento_5`
+
 ---
-## 4. Vetorização dos Textos
 
-Foram testadas várias técnicas de vetorização:
+## 📈 Vetorização & Modelagem
 
-Bag of Words
+Testamos diferentes combinações:
 
-TF-IDF
+- **Vetorização**:
+  - Bag of Words  
+  - TF-IDF  
+  - TF-IDF com n-grams (1,2)  
+  - TF-IDF com diferentes números de features (50 / 100 / 1000)
 
-TF-IDF com ngrams (1,2)
+- **Modelo**:
+  - Regressão Logística
 
-Teste com diferentes quantidades de features (50, 100, 1000, todas)
+**Melhor resultado obtido**:
+
+| Técnica         | Pré-processamento | Acurácia |
+|----------------|--------------------|----------|
+| TF-IDF (ngrams) | tratamento_5        | **91.85 %** |
+
 ---
-## 5. Modelagem e Avaliação
 
-O principal modelo utilizado foi Regressão Logística, gerando resultados para cada etapa.
+## 💡 Interpretação do Modelo
 
-# 📈 Melhor resultado obtido
-Técnica	Pré-processamento	Acurácia
-TF-IDF (ngrams 1–2)	tratamento_5	91.85%
+- **Palavras positivas** mais relevantes: *ótimo*, *excelente*, *perfeito*, *adorei*, *satisfatório*  
+- **Palavras negativas** mais relevantes: *péssimo*, *defeito*, *frágil*, *decepção*, *devolução*
+
 ---
-## 6. Interpretação do Modelo
 
-Foi analisado o peso das palavras no modelo:
+## 🧰 Tecnologias
 
-🔹 Palavras mais associadas a sentimentos positivos
-ex.: ótimo, excelente, perfeito, adorei, satisfatório
+- Python  
+- Pandas  
+- NLTK  
+- Scikit-learn  
+- Matplotlib & Seaborn  
+- WordCloud  
+- Joblib  
+- Unidecode  
 
-🔹 Palavras mais associadas a sentimentos negativos
-ex.: péssimo, defeito, frágil, decepção, devolução
 ---
-## 7. Exportação dos Modelos
 
-O projeto salva:
+## 🚀 Como Usar
 
-tfidf_vectorizer.pkl
+1. Clone o repositório:  
+   ```bash
+   git clone https://github.com/matheusbgomes4/analise_sentimentos_NLP.git
+   cd analise_sentimentos_NLP
 
-modelo_regressao_logistica.pkl
-
-Para uso posterior.
----
-## 8. Função de Classificação para Novas Avaliações
-
-Foi criada uma função que:
-
-Processa o texto (todas as etapas do tratamento)
-
-Vetoriza
-
-Prediz o sentimento
-
-Exemplo:
-
-prever_sentimento("Ótimo produto, super recomendo!")
-# Resultado → positivo
----
-# 🧪 Tecnologias Utilizadas
-
-Python
-
-Pandas
-
-Matplotlib
-
-Seaborn
-
-NLTK
-
-Scikit-learn
-
-WordCloud
-
-Joblib
-
-Unidecode
+2. Instale dependências:
+pip install -r requirements.txt
+3. Execute o notebook no Jupyter ou Google Colab
+4. Para prever o sentimento de uma nova avaliação:
+from seu_script import prever_sentimento  
+print(prever_sentimento("Ótimo produto, super recomendo!"))
 ---
 # 📌 Exemplos de Classificação
-| Avaliação                                                      | Resultado |
-|---------------------------------------------------------------|-----------|
-| "Ótimo produto, super recomendo!"                             | positivo  |
-| "Entrega atrasou muito, decepcionado."                        | negativo  |
-| "Produto danificado, precisei devolver."                      | negativo  |
-| "Bom custo-benefício, atendeu às expectativas."               | positivo  |
+| Avaliação                                       | Resultado |
+| ----------------------------------------------- | --------- |
+| “Ótimo produto, super recomendo!”               | positivo  |
+| “Entrega atrasou muito, decepcionado.”          | negativo  |
+| “Produto danificado, precisei devolver.”        | negativo  |
+| “Bom custo-benefício, atendeu às expectativas.” | positivo  |
 ---
-# 🚀 Resultados e Conclusão
+# 🔭 Possíveis Melhorias Futuras
 
-O projeto demonstra como pré-processamento textual e vetorização adequada elevam significativamente a performance do modelo.
+Tunagem com Cross-Validation
 
-Bag of Words: ~79%
+Testar modelos mais robustos (SVM, Random Forest)
 
-TF-IDF bruto: ~79%
+Testar embeddings modernos (Word2Vec, BERT)
 
-TF-IDF + tratamento completo: 91.85%
+Criar API ou dashboard para utilização real
+
+Criar pipeline completo com MLflow
 ---
+
+# ✔️ Conclusão
+
+Este projeto demonstra como técnicas de pré-processamento, vetorização e modelagem podem formar um pipeline robusto de NLP, alcançando 91,85% de acurácia na classificação de sentimentos.
+
+É um exemplo completo e replicável de Machine Learning aplicado em linguagem natural.
+---
+
